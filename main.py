@@ -226,6 +226,8 @@ def get_icons() -> Tuple[Dict[str, BytesIO], List[str]]:
                         icons[path] = img_bytes
                 else:
                     # File type not supported
+                    # For example, .txt files have no icon and use Windows' default
+                    # In future, we can analyse shell32.dll to fetch default icons
                     if not path.endswith("desktop.ini"):
                         unsortable.append(path)
             except Exception as e:
@@ -238,6 +240,8 @@ if __name__ == "__main__":
     sortable_icons, unsortable_icons = get_icons()
     sorted_icons = sort_icons_by_color(sortable_icons)
 
+    # Sorted icons are currently just a suggestion
+    # In future, we can create a IconLayouts registry key to actually sort the icons
     print("Icons sorted by colour:")
     for i, k in enumerate(sorted_icons.keys(), start=1):
         print(f"{i}. {k.split('\\')[-1].split('.')[0]}")

@@ -241,7 +241,7 @@ if __name__ == "__main__":
     sorted_icons = sort_icons_by_color(sortable_icons)
 
     # Sorted icons are currently just a suggestion
-    # In future, we can create a IconLayouts registry key to actually sort the icons
+    # In future, we can modify the IconLayouts registry key to actually sort the icons
     print("Icons sorted by colour:")
     for i, k in enumerate(sorted_icons.keys(), start=1):
         print(f"{i}. {k.split('\\')[-1].split('.')[0]}")
